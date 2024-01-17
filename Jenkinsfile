@@ -14,13 +14,7 @@ pipeline {
     }
     
     stages {
-        stage('Hello') {
-            steps {
-                echo "${LAPTOP}"+"${PROCESSOR}"
-                echo "${tenant}"
-                echo "${buildNumber}"
-            }
-        }
+        
         
         stage('UAT cluster') {
             when {
@@ -45,6 +39,27 @@ pipeline {
                         [choice(choices: "yes\nNO", description: 'Are you SERIOUS?', name: 'choice')]
                     }
                 }
+            }
+        }
+
+        stage('Maven build'){
+            steps{
+                script {
+                    def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                    majorVersion = version.substring(0,4)
+                    
+                    RELEASE_VER=majorVersion+env.BUILD_NUMBER+'-SNAPSHOT'
+                    
+                }
+            }
+        }
+
+        stage('print all') {
+            steps {
+                echo "${LAPTOP}"+"${PROCESSOR}"
+                echo "${tenant}"
+                echo "${buildNumber}"
+                echo "${RELEASE_VER}"
             }
         }
     }
