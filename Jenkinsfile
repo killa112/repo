@@ -60,6 +60,7 @@ pipeline {
                 echo "${tenant}"
                 echo "${buildNumber}"
                 echo "${RELEASE_VER}"
+                echo "${majorVersion}"
             }
         }
     }
