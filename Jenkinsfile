@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo "${LAPTOP}"+"${PROCESSOR}"
                 echo "${tenant}"
-                echo 
+                echo "${buildNumber}"
             }
         }
         
