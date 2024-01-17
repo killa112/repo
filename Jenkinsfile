@@ -20,6 +20,16 @@ pipeline {
             }
         }
         
+        stage('UAT cluster') {
+            when {
+                expression {
+                    branchName == /main/
+                }
+            }
+            steps {
+                echo "branch is ${branchName}"
+            }
+        }
         stage('Approve deploying to prod') {
             when {
                 expression {
