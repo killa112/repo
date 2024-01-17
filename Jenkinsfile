@@ -23,7 +23,7 @@ pipeline {
         stage('Approve deploying to prod') {
             when {
                 expression {
-                    branchName == /master/
+                    branchName == /jenkins/
                 }
             }
             steps {
