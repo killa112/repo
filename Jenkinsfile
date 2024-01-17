@@ -4,7 +4,8 @@ pipeline {
     environment {
         LAPTOP = "LENOVO"
         TENANT= "chris"
-        branchName= env.BRANCH_NAME.toLowerCase().replaceAll('\\/','-')   
+        branchName= env.BRANCH_NAME.toLowerCase().replaceAll('\\/','-')
+        buildNumber= env.BUILD_NUMBER
     }
     
     parameters {
@@ -17,6 +18,7 @@ pipeline {
             steps {
                 echo "${LAPTOP}"+"${PROCESSOR}"
                 echo "${tenant}"
+                echo 
             }
         }
         
