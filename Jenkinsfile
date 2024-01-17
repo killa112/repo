@@ -5,7 +5,7 @@ pipeline {
         LAPTOP = "LENOVO"
         TENANT= "chris"
         branchName= env.BRANCH_NAME.toLowerCase().replaceAll('\\/','-')
-        buildNumber= env.BUILD_NUMBER
+        buildNumber= 'env.BUILD_NUMBER'
     }
     
     parameters {
